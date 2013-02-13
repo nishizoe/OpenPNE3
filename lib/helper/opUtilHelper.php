@@ -911,28 +911,15 @@ function op_distance_of_time_in_words($from_time, $to_time, $include_seconds = f
   {
     $string = '1 day';
   }
-  else if ($distance_in_minutes >= 2880 && $distance_in_minutes <= 43199)
+  else if ($distance_in_minutes >= 2880 && $distance_in_minutes <= 4319)
   {
     $string = '%days% days';
     $parameters['%days%'] = round($distance_in_minutes / 1440);
   }
-  else if ($distance_in_minutes >= 43200 && $distance_in_minutes <= 86399)
+  else if ($distance_in_minutes >= 4320)
   {
-    $string = 'about 1 month';
-  }
-  else if ($distance_in_minutes >= 86400 && $distance_in_minutes <= 525959)
-  {
-    $string = '%months% months';
-    $parameters['%months%'] = round($distance_in_minutes / 43200);
-  }
-  else if ($distance_in_minutes >= 525960 && $distance_in_minutes <= 1051919)
-  {
-    $string = 'about 1 year';
-  }
-  else
-  {
-    $string = 'over %years% years';
-    $parameters['%years%'] = floor($distance_in_minutes / 525960);
+    $string = 'over %days% days';
+    $parameters['%days%'] = 3;
   }
 
   $string = sprintf($format, $string);
